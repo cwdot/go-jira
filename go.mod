@@ -1,4 +1,4 @@
-module github.com/cwdot/go-jira/v2
+module github.com/cwdot/go-jira
 
 go 1.25.1
 
