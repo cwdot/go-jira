@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"strings"
 
-	jira "github.com/andygrunwald/go-jira/v2/onpremise"
+	jira "github.com/cwdot/go-jira/v2/onpremise"
 )
 
 func main() {
