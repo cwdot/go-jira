@@ -1,0 +1,85 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "rebaseWhen": "conflicted",
+  "prConcurrentLimit": 150,
+
+  // automerging
+
+  "automergeSchedule": [
+    "* 18-22 * * *"
+  ],
+  "automergeType": "pr",
+  "lockFileMaintenance": {
+    "automerge": true
+  },
+  "minor": {
+    "automerge": true
+  },
+  "patch": {
+    "automerge": true
+  },
+  "pin": {
+    "automerge": true
+  },
+  "separateMinorPatch": false,
+  "pinDigests": true,
+  "vulnerabilityAlerts": {
+    "enabled": true,
+    "labels": [
+      "security"
+    ]
+  },
+
+  "branchPrefix": "renovate/",
+  "semanticCommits": "enabled",
+  "gitAuthor": "renovate <renovate@cwdot>",
+  "prHourlyLimit": 0,
+  "suppressNotifications": ["prEditedNotification", "prIgnoreNotification"],
+  "dependencyDashboard": false,
+  "extends": [
+    "config:recommended",
+    "mergeConfidence:all-badges",
+  ],
+  "packageRules": [
+    // Go modules grouping
+    {
+      "matchManagers": ["gomod"],
+      "matchDepNames": ["golang.org/x/**"],
+      "groupName": "golang.org/x"
+    },
+    {
+      "matchManagers": ["gomod"],
+      "matchDepNames": ["github.com/stretchr/testify"],
+      "groupName": "testing framework"
+    },
+
+    // labels
+
+    {
+      "matchUpdateTypes": ["major"],
+      "labels": ["type/major"]
+    },
+    {
+      "matchUpdateTypes": ["minor"],
+      "labels": ["type/minor", "automerge"]
+    },
+    {
+      "matchUpdateTypes": ["patch"],
+      "labels": ["type/patch", "automerge"]
+    },
+    {
+      "matchUpdateTypes": ["digest", "pin"],
+      "labels": ["type/digest", "automerge"]
+    },
+    {
+      "matchUpdateTypes": ["pin"],
+      "labels": ["type/pin", "automerge"]
+    },
+  ],
+  "ignoreDeps": [
+    // List any dependencies to ignore globally if needed
+  ],
+  "ignorePaths": [
+    "*/*.disabled/*",
+  ],
+}
